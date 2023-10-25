@@ -1,7 +1,11 @@
 //footer component
+import '../index.css';
 function Footer() {
     return (
-     <footer>
+     <footer className='footer'>
+        <div>
+            <p>© 2023 RecipeRise. All rights reserved</p>
+        </div>
      </footer>
     );
 }

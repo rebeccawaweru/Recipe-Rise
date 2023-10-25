@@ -26,4 +26,12 @@ code {
   padding: 4px;
   color:white;
 }
-
+.footer{
+  position: absolute;
+  bottom: auto;
+  width: 100%;
+  background-color: black;
+  color: white;
+  padding: 20px;
+  text-align: center;
+}

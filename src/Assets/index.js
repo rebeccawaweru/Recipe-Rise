@@ -1,0 +1,7 @@
+export {BiLogoFacebook, BiLogoTwitter,BiLogoInstagramAlt, BiLogoLinkedinSquare, BiPlus,BiMenuAltRight} from 'react-icons/bi'
+export {BsSearch} from 'react-icons/bs'
+export {HiOutlineShoppingBag} from 'react-icons/hi'
+export {RxDividerVertical} from 'react-icons/rx'
+export {default as logo} from './images/logo.png'
+export {default as home} from './images/home.jpg'
+export {default as darklogo} from './images/dark-logo.png'

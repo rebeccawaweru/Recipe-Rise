@@ -28,8 +28,8 @@ code {
   color:white;
 }
 .footer{
-  position: absolute;
-  bottom: auto;
+  position: relative;
+  bottom: 0;
   width: 100%;
   background-color: black;
   color: white;

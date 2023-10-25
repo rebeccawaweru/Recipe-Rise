@@ -1,9 +1,11 @@
 //footer component
+import {rrfavicongreen,} from '../Assets'
 function Footer() {
     return (
      <footer className='footer'>
         <div>
-            <p>© 2023 RecipeRise. All rights reserved</p>
+            <img src={rrfavicongreen} alt="favicon" />
+            <p>© 2023 Recipe-Rise. All rights reserved</p>
         </div>
      </footer>
     );

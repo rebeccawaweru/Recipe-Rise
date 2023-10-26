@@ -1,11 +1,11 @@
 import { Header, Footer } from "../../Layouts";
-import { home } from "../../Assets";
+import { Slider } from "../../Components";
 function Home() {
     return (
         <div className="app">
         <Header/>
         <main>
-         <img src={home} alt="recipe"/>
+         <Slider/>
         </main>
         <Footer/>
         </div>

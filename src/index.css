@@ -55,7 +55,8 @@ ul > p{
   margin-right: 10px;
   font-weight: 500;
 }
-li:hover{
+
+li:hover, ul > p:hover{
   color: orangered;
 }
 ul button{
@@ -72,13 +73,13 @@ ul button:hover{
   background-color: black;
 }
 ul img{
-  height: 10vh;
+  height: 8vh;
   width: 180px;
 }
 hr{
   margin: 0 2%;
   border: none;
-  height: 1px;
+  height: 0.5px;
   background-color: rgb(203 213 225);
 }
 .info{
@@ -86,6 +87,7 @@ hr{
 }
 .icons{
   display: inline-flex;
+  font-size: 18px;
 }
 .icons p {
   margin-right: 10px;
@@ -93,13 +95,65 @@ hr{
 .sidemenu{
   display: none;
 }
-ul,main {
+ul, main {
   padding: 0px 28px;
 }
 main img{
   width: 100%;
   height: 85vh;
 }
+
+.image-container{
+  display: flex;
+  position: relative;
+ align-items: center;
+ justify-content: center;
+}
+.slider .active{
+  display: block;
+ animation: myslider 2s ease-in;
+}
+
+.slider .inactive{
+  display: none;
+}
+
+.customicon{
+  height: 28px;
+  width: 28px;
+  background-color: white;
+  padding: 10px;
+  color: orangered;
+  border-radius: 50%;
+  z-index: 50;
+  margin: 0% -8%;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0px 0px 10px 0px white;
+  font-size: 20px;
+  display:none;
+}
+.customicon:hover{
+  background-color: orangered;
+  color: white;
+  /* scale: 1.5; */
+}
+.image-container:hover .customicon {
+  display: flex;
+}
+/* @keyframes myslider {
+   0%{
+    opacity: 0.8;
+
+   }
+   100%{
+    opacity: 1;
+   }
+} */
+
+
+
 
 /* responsive design with media queries */
 
@@ -116,6 +170,11 @@ main img{
   }
   .sidemenu{
     display: block;
+  }
+  .customicon{
+    margin: 0% -16%;
+    height: 18px;
+    width: 18px;
   }
 
 }
@@ -157,7 +216,7 @@ main img{
     width: 180px;
   }
   main img{
-    height: 50vh;
+    height: 40vh;
   }
 
 }

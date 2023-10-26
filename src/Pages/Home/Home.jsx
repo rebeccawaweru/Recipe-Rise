@@ -1,14 +1,13 @@
-import { Header, Footer } from "../../Layouts";
+import {Wrapper } from "../../Layouts";
 import {Slider} from '../../Components'
 function Home() {
     return (
-        <div className="app">
-        <Header/>
-        <main>
-         <Slider/>
-        </main>
-        <Footer/>
+    <Wrapper>
+        <div className="main">
+        <Slider/>
         </div>
+      
+    </Wrapper>
     );
 }
 export default Home;

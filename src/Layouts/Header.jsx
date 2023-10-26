@@ -1,6 +1,7 @@
 //navbar component 
 import { useState } from 'react';
 import {AiOutlineClose,logo,BiLogoFacebook,BiLogoTwitter,BiLogoLinkedinSquare,BiLogoInstagramAlt,BiPlus,BsSearch,HiOutlineShoppingBag,RxDividerVertical,BiMenuAltRight} from '../Assets'
+import { ListItem } from '../Components';
 function Header() {
   const [toggle, setToggle] = useState('none')
     return (
@@ -28,25 +29,25 @@ function Header() {
      {/* toggle menu on small devices */}
      <div className='sidemenu' style={{display:toggle}}>
         <AiOutlineClose onClick={()=>setToggle('none')} className='close'/>
-        <p>Home</p>
-        <p>Category</p>
-        <p>Recipes</p>
-        <p>Blog</p>
-        <p>Contact</p>
-        <p>Login</p>
+        <p><ListItem to="/" page="Home"/></p>
+        <p><ListItem to="/category" page="Category"/></p>
+        <p><ListItem to="/recipes" page="Recipes"/></p>
+        <p><ListItem to="/blog" page="Blog"/></p>
+        <p><ListItem to="/contact" page="Contact"/></p>
+        <p><ListItem to="/login" page="Login"/></p>
      </div>
 
      <hr/>
      <div className='nav menu'>
        <ul>
-        <li style={{color:'orangered'}}>Home</li>
-        <li>Category</li>
-        <li>Recipes</li>
-        <li>Blog</li>
-        <li>Contact</li>
+        <ListItem to="/" page="Home"/>
+        <ListItem to="/category" page="Category"/>
+        <ListItem to="/recipes" page="Recipes"/>
+        <ListItem to="/blog" page="Blog"/>
+        <ListItem to="/contact" page="Contact"/>
        </ul>  
        <ul>
-        <p>Login</p>
+      <div style={{marginRight:-18}}><ListItem to='/login' page="Login"/></div>
         <button>
         <BiPlus/>
         Submit Recipe

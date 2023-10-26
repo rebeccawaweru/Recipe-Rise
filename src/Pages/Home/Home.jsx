@@ -1,5 +1,5 @@
 import { Header, Footer } from "../../Layouts";
-import { Slider } from "../../Components";
+import {Slider} from '../../Components'
 function Home() {
     return (
         <div className="app">

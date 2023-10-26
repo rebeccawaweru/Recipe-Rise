@@ -3,6 +3,7 @@ export {BsSearch,BsFillArrowRightCircleFill,BsFillArrowLeftCircleFill} from 'rea
 export {HiOutlineShoppingBag} from 'react-icons/hi'
 export {RxDividerVertical} from 'react-icons/rx'
 export {IoIosArrowForward,IoIosArrowBack} from 'react-icons/io'
+export {AiOutlineClose} from 'react-icons/ai'
 export {default as logo} from './images/logo.png'
 export {default as home} from './images/home.jpg'
 export {default as home2} from './images/home2.jpg'

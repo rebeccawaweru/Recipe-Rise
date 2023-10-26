@@ -7,18 +7,18 @@ function Header() {
      <div className='nav'>
         <ul className='info'>
         <div className='icons'>
-            <p><BiLogoTwitter/></p>
-            <p><BiLogoFacebook/></p>
-            <p><BiLogoInstagramAlt/></p>
-             <p><BiLogoLinkedinSquare/></p>
+            <p><BiLogoTwitter /></p>
+            <p><BiLogoFacebook /></p>
+            <p><BiLogoInstagramAlt /></p>
+             <p><BiLogoLinkedinSquare /></p>
         </div>
        <img src={logo} alt='Recipe'/>
          <div className='icons'>
-            <BsSearch size={20}/>
-            <RxDividerVertical size={20} color='gray'/>
-            <HiOutlineShoppingBag size={20}/>
+            <BsSearch />
+            <RxDividerVertical  color='gray'/>
+            <HiOutlineShoppingBag />
         </div>
-        <p className='sidemenu'><BiMenuAltRight size={28} color='gray'/></p>
+        <div className='sidemenu'><BiMenuAltRight size={28} color='gray'/></div>
         </ul>
     
      </div>

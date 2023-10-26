@@ -92,7 +92,7 @@ hr{
 .icons p {
   margin-right: 10px;
 }
-.sidemenu{
+.togglemenu{
   display: none;
 }
 ul, main {
@@ -110,14 +110,38 @@ main img{
  justify-content: center;
 }
 .slider .active{
+  position: relative;
   display: block;
+  width: 100%;
  animation: myslider 2s ease-in;
 }
 
 .slider .inactive{
   display: none;
 }
-
+.description{
+  height: 45vh;
+  width:60%;
+  background-color: white;
+  position: absolute;
+  z-index: 50;
+  right: 0;
+  bottom: 0;
+  left:0;
+  margin: auto;
+  animation: desc 1s linear;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.description div>p{
+  color: orangered;
+  font-weight: bolder;
+}
+.description div>h6{
+  font-size: 20px;
+}
 .customicon{
   height: 28px;
   width: 28px;
@@ -125,7 +149,7 @@ main img{
   padding: 10px;
   color: orangered;
   border-radius: 50%;
-  z-index: 50;
+  z-index: 40;
   margin: 0% -8%;
   align-items: center;
   justify-content: center;
@@ -142,6 +166,51 @@ main img{
 .image-container:hover .customicon {
   display: flex;
 }
+.image-container:hover .description {
+  display: flex;
+}
+.sidemenu{
+  height: auto;
+  width: auto;
+  text-align: left;
+  padding: 20px 25px;
+  background-color: white;
+  color: black;
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 50;
+  animation: toggle 1.2s linear;
+}
+.sidemenu p{
+  margin: 24px 14px;
+}
+.sidemenu p:hover{
+  color: orangered;
+}
+.sidemenu .close{
+  float: right;
+  margin: -8px -16px 0px 0px;
+  cursor: pointer;
+}
+
+@keyframes toggle {
+   0%{
+    right: -50%;
+   }
+   100%{
+    right: 0%;
+   }
+}
+
+@keyframes desc {
+   0%{
+     bottom: -50%
+   }
+   100%{
+     bottom: 0%;
+   }
+}
 /* @keyframes myslider {
    0%{
     opacity: 0.8;
@@ -151,10 +220,6 @@ main img{
     opacity: 1;
    }
 } */
-
-
-
-
 /* responsive design with media queries */
 
 /* Media query for screens smaller than 576px (e.g., smartphones) */
@@ -168,7 +233,7 @@ main img{
   .menu, hr {
     display: none;
   }
-  .sidemenu{
+  .togglemenu{
     display: block;
   }
   .customicon{
@@ -176,7 +241,12 @@ main img{
     height: 18px;
     width: 18px;
   }
-
+  .description{
+    height: 20vh;
+  }
+  .description div>h6{
+    font-size: 10px;
+  }
 }
 @media screen and (max-width: 414px) {
   ul img{
@@ -200,14 +270,15 @@ main img{
 
 /* Media query for screens between 576px and 768px (e.g., tablets) */
 @media screen and (min-width: 576px) and (max-width: 767px){
+  li{
+    margin-right: 20px;
+  }
   ul, main{
     padding: 0px 24px;
   }
-
   main img{
     height: 60vh;
   }
-
 }
 /* Media query for screens between 768px and 992px (e.g., small desktops) */
 @media  screen and (min-width: 768px) and (max-width: 991px) {
@@ -218,7 +289,12 @@ main img{
   main img{
     height: 40vh;
   }
-
+  .description{
+    height: 22vh;
+  }
+  .description div>h6{
+    font-size: 20px;
+  }
 }
 
 /* Media query for screens larger than 992px (e.g., larger desktops) */

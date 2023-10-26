@@ -1,6 +1,8 @@
 //navbar component 
-import {logo,BiLogoFacebook,BiLogoTwitter,BiLogoLinkedinSquare,BiLogoInstagramAlt,BiPlus,BsSearch,HiOutlineShoppingBag,RxDividerVertical,BiMenuAltRight} from '../Assets'
+import { useState } from 'react';
+import {AiOutlineClose,logo,BiLogoFacebook,BiLogoTwitter,BiLogoLinkedinSquare,BiLogoInstagramAlt,BiPlus,BsSearch,HiOutlineShoppingBag,RxDividerVertical,BiMenuAltRight} from '../Assets'
 function Header() {
+  const [toggle, setToggle] = useState('none')
     return (
     <header>
     <nav> 
@@ -18,9 +20,20 @@ function Header() {
             <RxDividerVertical  color='gray'/>
             <HiOutlineShoppingBag />
         </div>
-        <div className='sidemenu'><BiMenuAltRight size={28} color='gray'/></div>
+        <div onClick={()=>setToggle('block')} className='togglemenu'>
+          <BiMenuAltRight size={28} color='gray'/>
+        </div>
         </ul>
-    
+     </div>
+     {/* toggle menu on small devices */}
+     <div className='sidemenu' style={{display:toggle}}>
+        <AiOutlineClose onClick={()=>setToggle('none')} className='close'/>
+        <p>Home</p>
+        <p>Category</p>
+        <p>Recipes</p>
+        <p>Blog</p>
+        <p>Contact</p>
+        <p>Login</p>
      </div>
 
      <hr/>

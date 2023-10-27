@@ -1,9 +1,10 @@
-import { Button } from "../../Components";
-function Login(props) {
+import { Wrapper } from "../../Layouts";
+import { Intro } from "../../Components";
+function Login() {
     return (
-        <div>
-        <Button title="Login" handleClick=""/> 
-        </div>
+     <Wrapper>
+      <Intro title="Login" caption="User Login"/>
+     </Wrapper>
     );
 }
 

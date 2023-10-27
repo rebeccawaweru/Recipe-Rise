@@ -1,7 +1,14 @@
-import { Home } from "./Pages";
+import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
+import { PublicRoutes, PrivateRoutes } from "./Routes";
 function App() {
   return (
-    <Home/>
+    <Router>
+      <Routes>
+        <Route path="/*" element={<PublicRoutes/>}/>
+        <Route path="/user/*" element={<PrivateRoutes/>}/>
+      </Routes>
+    </Router>
+
   );
 }
 export default App;

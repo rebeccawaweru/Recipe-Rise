@@ -57,18 +57,22 @@ header {
 li{
   margin-right: 40px;
   list-style: none;
+  font-weight: 450;
+}
+.link{
+  text-decoration: none;
+  color: black;
+}
+
+.link:hover, .current{
+  color: rgba(255, 74, 82, 1);
+  text-decoration: none;
   font-weight: 500;
 }
-ul > p{
-  margin-right: 10px;
-  font-weight: 500;
-}
-li:hover{
-  color: orangered;
-}
+
 ul button{
   display: flex;
-  background-color: orangered;
+  background-color: rgba(255, 74, 82, 1);
   color: white;
   padding: 15px;
   border-radius: 25px;
@@ -80,13 +84,13 @@ ul button:hover{
   background-color: black;
 }
 ul img{
-  height: 10vh;
+  height: 8vh;
   width: 180px;
 }
 hr{
   margin: 0 2%;
   border: none;
-  height: 1px;
+  height: 0.5px;
   background-color: rgb(203 213 225);
 }
 .info{
@@ -94,26 +98,175 @@ hr{
 }
 .icons{
   display: inline-flex;
+  font-size: 18px;
 }
 .icons p {
   margin-right: 10px;
 }
-.sidemenu{
+.togglemenu{
   display: none;
 }
-ul,main {
+ul, .main {
   padding: 0px 28px;
 }
-main img{
+.main img{
   width: 100%;
   height: 85vh;
+  object-fit: cover;
 }
 
+.image-container{
+  display: flex;
+  position: relative;
+ align-items: center;
+ justify-content: center;
+}
+.slider .active{
+  position: relative;
+  display: block;
+  width: 100%;
+ animation: myslider 2s ease-in;
+}
+
+.slider .inactive{
+  display: none;
+}
+.description{
+  height: 45vh;
+  width:60%;
+  background-color: white;
+  position: absolute;
+  z-index: 50;
+  right: 0;
+  bottom: 0;
+  left:0;
+  margin: auto;
+  animation: desc 1s linear;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.description div>p{
+  color: rgba(255, 74, 82, 1);
+  font-weight: bolder;
+}
+.description div>h6{
+  font-size: 20px;
+}
+.customicon{
+  height: 28px;
+  width: 28px;
+  background-color: white;
+  padding: 10px;
+  color: rgba(255, 74, 82, 1);
+  border-radius: 50%;
+  z-index: 40;
+  margin: 0% -8%;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0px 0px 10px 0px white;
+  font-size: 20px;
+  display:none;
+}
+.customicon:hover{
+  background-color: rgba(255, 74, 82, 1);
+  color: white;
+  /* scale: 1.5; */
+}
+.image-container:hover .customicon {
+  display: flex;
+}
+.image-container:hover .description {
+  display: flex;
+}
+.sidemenu{
+  height: auto;
+  width: auto;
+  text-align: left;
+  padding: 20px 25px;
+  background-color: white;
+  color: black;
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 50;
+  animation: toggle 1.2s linear;
+}
+.sidemenu p{
+  margin: 24px 0px 10px 24px;
+}
+.sidemenu p:hover{
+  color: rgba(255, 74, 82, 1);
+}
+.sidemenu .close{
+  float: right;
+  margin: -8px -16px 0px 0px;
+  cursor: pointer;
+}
+.contain{
+  width: 100%;
+  height: 40vh;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+
+}
+.contain .intro{
+  position: absolute;
+  z-index: 50;
+  color: white;
+}
+.intro .title{
+  font-size: 30px;
+  font-weight: 400;
+  margin-bottom: -8px;
+}
+.intro .caption{
+  display: inline-flex;
+}
+
+.gradient{
+  background-color: rgba(255, 74, 82, 1);
+  inset: 0;
+  position: absolute;
+  opacity: 0.9;
+}
+
+@keyframes toggle {
+   0%{
+    right: -50%;
+   }
+   100%{
+    right: 0%;
+   }
+}
+
+@keyframes desc {
+   0%{
+     bottom: -50%
+   }
+   100%{
+     bottom: 0%;
+   }
+}
+/* @keyframes myslider {
+   0%{
+    opacity: 0.8;
+
+   }
+   100%{
+    opacity: 1;
+   }
+} */
 /* responsive design with media queries */
 
 /* Media query for screens smaller than 576px (e.g., smartphones) */
 @media screen and (max-width: 575px) {
-  ul,main{
+  ul,.main{
     padding: 0px 24px;
   }
   .icons{
@@ -122,16 +275,26 @@ main img{
   .menu, hr {
     display: none;
   }
-  .sidemenu{
+  .togglemenu{
     display: block;
   }
-
+  .customicon{
+    margin: 0% -16%;
+    height: 18px;
+    width: 18px;
+  }
+  .description{
+    height: 20vh;
+  }
+  .description div>h6{
+    font-size: 10px;
+  }
 }
 @media screen and (max-width: 414px) {
   ul img{
     width: 200px;
   }
-  main img{
+  .main img{
     height: 30vh;
   }
 }
@@ -140,8 +303,9 @@ main img{
     height: 8vh;
      width: 200px;
   }
-  main img{
-    height: 50vh;
+  .main img{
+    height: 45vh;
+
   }
 }
 
@@ -149,14 +313,15 @@ main img{
 
 /* Media query for screens between 576px and 768px (e.g., tablets) */
 @media screen and (min-width: 576px) and (max-width: 767px){
-  ul, main{
+  li{
+    margin-right: 20px;
+  }
+  ul, .main{
     padding: 0px 24px;
   }
-
-  main img{
+  .main img{
     height: 60vh;
   }
-
 }
 /* Media query for screens between 768px and 992px (e.g., small desktops) */
 @media  screen and (min-width: 768px) and (max-width: 991px) {
@@ -164,10 +329,15 @@ main img{
     height:5vh;
     width: 180px;
   }
-  main img{
-    height: 50vh;
+  .main img{
+    height: 40vh;
   }
-
+  .description{
+    height: 22vh;
+  }
+  .description div>h6{
+    font-size: 20px;
+  }
 }
 
 /* Media query for screens larger than 992px (e.g., larger desktops) */

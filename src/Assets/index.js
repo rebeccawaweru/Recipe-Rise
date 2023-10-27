@@ -1,11 +1,21 @@
 export {BiLogoFacebook, BiLogoTwitter,BiLogoInstagramAlt, BiLogoLinkedinSquare, BiPlus,BiMenuAltRight} from 'react-icons/bi'
-export {BsSearch} from 'react-icons/bs'
+export {BsSearch,BsFillArrowRightCircleFill,BsFillArrowLeftCircleFill} from 'react-icons/bs'
 export {HiOutlineShoppingBag} from 'react-icons/hi'
 export {RxDividerVertical} from 'react-icons/rx'
+export {IoIosArrowForward,IoIosArrowBack} from 'react-icons/io'
+export {AiOutlineClose} from 'react-icons/ai'
+export {FaHome} from 'react-icons/fa'
 export {default as logo} from './images/logo.png'
 export {default as home} from './images/home.jpg'
+<<<<<<< HEAD
 export {default as darklogo} from './images/dark-logo.png'
 export {default as rrhighresgreen} from './images/rrhighresgreen.png'
 export {default as rrhighresblack} from './images/rrhighresblack.png'
 export {default as rrfavicongreen} from './images/rrfavicongreen.png'
 export {default as rrfaviconblack} from './images/rrfaviconblack.png'
+=======
+export {default as home2} from './images/home2.jpg'
+export {default as home3} from './images/home3.jpg'
+export {default as background} from './images/background.jpg'
+export {default as darklogo} from './images/dark-logo.png'
+>>>>>>> origin/becca

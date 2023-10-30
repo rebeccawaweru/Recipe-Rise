@@ -1,10 +1,11 @@
 import {Routes, Route } from "react-router-dom"
-import { Home, Login } from "../Pages"
+import { Faq, Home, Login } from "../Pages"
 const PublicRoutes = () =>{
   return(
         <Routes>
         <Route path="/" element={<Home/>}/>
         <Route path="/login" element={<Login/>}/>
+        <Route path="/faq" element={<Faq/>}/>
         </Routes>
   )
 }

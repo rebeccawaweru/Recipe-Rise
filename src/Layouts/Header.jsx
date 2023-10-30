@@ -1,6 +1,6 @@
 //navbar component 
 import { useState } from 'react';
-import {AiOutlineClose,logo,BiLogoFacebook,BiLogoTwitter,BiLogoLinkedinSquare,BiLogoInstagramAlt,BiPlus,BsSearch,HiOutlineShoppingBag,RxDividerVertical,BiMenuAltRight} from '../Assets'
+import {AiOutlineClose,logonobackground,BiLogoFacebook,BiLogoTwitter,BiLogoLinkedinSquare,BiLogoInstagramAlt,BiPlus,BsSearch,HiOutlineShoppingBag,RxDividerVertical,BiMenuAltRight} from '../Assets'
 import { ListItem } from '../Components';
 function Header() {
   const [toggle, setToggle] = useState('none')
@@ -15,7 +15,7 @@ function Header() {
             <p><BiLogoInstagramAlt /></p>
              <p><BiLogoLinkedinSquare /></p>
         </div>
-       <img src={logo} alt='Recipe'/>
+       <img src={logonobackground} alt='Recipe'/>
          <div className='icons'>
             <BsSearch />
             <RxDividerVertical  color='gray'/>
@@ -32,7 +32,7 @@ function Header() {
         <p><ListItem to="/" page="Home"/></p>
         <p><ListItem to="/category" page="Category"/></p>
         <p><ListItem to="/recipes" page="Recipes"/></p>
-        <p><ListItem to="/blog" page="Blog"/></p>
+        <p><ListItem to="/faq" page="FAQ"/></p>
         <p><ListItem to="/contact" page="Contact"/></p>
         <p><ListItem to="/login" page="Login"/></p>
      </div>
@@ -43,7 +43,7 @@ function Header() {
         <ListItem to="/" page="Home"/>
         <ListItem to="/category" page="Category"/>
         <ListItem to="/recipes" page="Recipes"/>
-        <ListItem to="/blog" page="Blog"/>
+        <ListItem to="/faq" page="FAQ"/>
         <ListItem to="/contact" page="Contact"/>
        </ul>  
        <ul>

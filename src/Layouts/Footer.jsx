@@ -15,7 +15,7 @@ function Footer() {
             </div>
         </div>
         <div className="socialmedia">
-            <ul className='socialmediacounter'>
+            <ul style={{flexWrap:"wrap"}} className='socialmediacounter'>
                 <li className='xs-counter-li'><BiLogoFacebook /> fans</li>
                 <li className='xs-counter-li'><BiLogoTwitter /> followers</li>
                 <li className='xs-counter-li'><BiLogoPinterest /> followers</li>

@@ -5,7 +5,7 @@ function App() {
     <Router>
       <Routes>
         <Route path="/*" element={<PublicRoutes/>}/>
-        <Route path="/user/*" element={<PrivateRoutes/>}/>
+        <Route path="/dashboard/*" element={<PrivateRoutes/>}/>
       </Routes>
     </Router>
 

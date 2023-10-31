@@ -1,9 +1,10 @@
 import { Route, Routes } from "react-router-dom"
-import { Slider } from "../Components"
+import { Dashboard } from "../Pages"
+
 const PrivateRoutes = () =>{
     return(
         <Routes>
-            <Route path="profile" element={<Slider/>}/>
+            <Route path="user" element={<Dashboard/>}/>
         </Routes>
     )
 }

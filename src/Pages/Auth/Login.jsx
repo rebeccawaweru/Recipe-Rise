@@ -4,7 +4,9 @@ import {IoIosArrowForward} from '../../Assets'
 import { Link } from "react-router-dom";
 import { loginSchema } from "../../Utils";
 import { useFormik } from "formik";
+import { useNavigate } from "react-router-dom";
 function Login() {
+  const navigate = useNavigate()
     const formik = useFormik({
       initialValues:{
         email:"",
@@ -12,7 +14,7 @@ function Login() {
       },
       validationSchema:loginSchema,
       onSubmit : async(values)=>{
-
+          navigate("/dashboard/user")
       }
     })
     return (

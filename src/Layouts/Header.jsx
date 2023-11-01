@@ -2,7 +2,8 @@
 import { useState } from 'react';
 import {AiOutlineClose,logonobackground,BiLogoFacebook,BiLogoTwitter,BiLogoLinkedinSquare,BiLogoInstagramAlt,BiPlus,BsSearch,HiOutlineShoppingBag,RxDividerVertical,BiMenuAltRight} from '../Assets'
 import { ListItem } from '../Components';
-function Header() {
+import { Link } from 'react-router-dom';
+function Header({handleClick}) {
   const [toggle, setToggle] = useState('none')
     return (
     <header>
@@ -30,7 +31,7 @@ function Header() {
      <div className='sidemenu' style={{display:toggle}}>
         <AiOutlineClose onClick={()=>setToggle('none')} className='close'/>
         <p><ListItem to="/" page="Home"/></p>
-        <p><ListItem to="/category" page="Category"/></p>
+        <p><ListItem onClick={handleClick} page="Category"/></p>
         <p><ListItem to="/recipes" page="Recipes"/></p>
         <p><ListItem to="/faq" page="FAQ"/></p>
         <p><ListItem to="/contact" page="Contact"/></p>
@@ -41,7 +42,7 @@ function Header() {
      <div className='nav menu'>
        <ul>
         <ListItem to="/" page="Home"/>
-        <ListItem to="/category" page="Category"/>
+        <ListItem onClick={handleClick} page="Category"/>
         <ListItem to="/recipes" page="Recipes"/>
         <ListItem to="/faq" page="FAQ"/>
         <ListItem to="/contact" page="Contact"/>
@@ -50,7 +51,7 @@ function Header() {
       <div style={{marginRight:-18}}><ListItem to='/login' page="Login"/></div>
         <button>
         <BiPlus/>
-        Submit Recipe
+        <Link style={{textDecoration:"none", color:"white"}} to="/signup">Submit Recipe</Link>
         </button>
        </ul>
      </div>

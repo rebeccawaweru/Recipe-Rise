@@ -1,6 +1,6 @@
 function Category({image, title, caption}) {
     return (
-        <div>
+        <div className="category">
             <img src={image} alt="category"/>
             <p>{title}</p>
             <p>{caption}</p>

@@ -3,7 +3,7 @@ import {Header, Footer} from '../Layouts'
 function Wrapper(props) {
     return (
      <div className='app'>
-        <Header/>
+        <Header handleClick={props.handleClick}/>
         <main>
             {props.children}
         </main>

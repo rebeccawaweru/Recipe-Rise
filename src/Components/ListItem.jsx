@@ -7,7 +7,7 @@ function ListItem(props) {
       router.pathname === props.to ? setActive(true) : setActive(false)
     },[router.pathname, props.to])
     return (
-        <li><Link  to={props.to} className={`${active ? 'current' : 'link'}`}>{props.page}</Link></li>
+        <li><Link onClick={props.onClick}  to={props.to} className={`${active ? 'current' : 'link'}`}>{props.page}</Link></li>
     );
 }
 

@@ -1,6 +1,0 @@
-export {default as Slider} from './Slider'
-export {default as Icon} from './Icon'
-export {default as ListItem} from './ListItem'
-export {default as Intro} from './Intro'
-export {default as Category} from './Category'
-export {default as Input} from './Input'

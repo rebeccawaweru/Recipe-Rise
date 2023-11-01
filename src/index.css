@@ -22,11 +22,6 @@ code {
   background-color: white;
 }
 
-.btn{
-  background-color: green;
-  padding: 4px;
-  color:white;
-}
 .footer{
   position: relative;
   bottom: 0;
@@ -67,9 +62,7 @@ code {
 header {
   width: 100%;
   height: auto;
-
 }
-
 .nav {
   width: 100%;
   display: flex;
@@ -108,7 +101,7 @@ ul button{
   cursor: pointer;
   font-weight: bold;
 }
-ul button:hover{
+ul button:hover, .btn:hover{
   background-color: black;
 }
 ul img{
@@ -134,7 +127,7 @@ hr{
 .togglemenu{
   display: none;
 }
-ul, .main {
+ul, .main{
   padding: 0px 28px;
 }
 .main img{
@@ -225,8 +218,11 @@ ul, .main {
 .sidemenu p{
   margin: 24px 0px 10px 24px;
 }
-.sidemenu p:hover{
+.sidemenu p:hover, .asterick{
   color: rgba(255, 74, 82, 1);
+}
+.asterick{
+  font-size: large;
 }
 .sidemenu .close{
   float: right;
@@ -262,6 +258,83 @@ ul, .main {
   inset: 0;
   position: absolute;
   opacity: 0.9;
+}
+.auth{
+  height: auto;
+  background-color: #d7d7d7;
+  padding: 1% 8% 1% 3%;
+  cursor: pointer;
+}
+form > div{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+.auth-wrapper{
+  width:45% ;
+}
+.area-wrapper{
+  width: 100%;
+  display: block;
+}
+label{
+ font-size: 14px;
+}
+input, textarea{
+  outline: none;
+  border: none;
+  padding: 18px;
+  background-color: white;
+  width: 100%;
+  margin: 2% 0%;
+}
+.invalid{
+  border: 1px solid rgba(255, 74, 82, 1) ;
+}
+input + p, textarea + p{
+  font-size: small;
+  margin-bottom: 24px;
+  font-style: italic;
+  font-weight: 500;
+}
+button:disabled{
+  background-color: gray;
+}
+.options{
+  width: 25%;
+}
+.btn{
+  padding: 12px;
+  color:white;
+  background-color: rgba(255, 74, 82, 1) ;
+  border: none;
+  width: 100px;
+  cursor: pointer;
+}
+.btn2{
+  color:white;
+  background-color: black ;
+  border: none;
+  width: 160px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  text-decoration: none;
+  font-size: smaller;
+}
+.btn2:hover{
+  background-color:rgba(255, 74, 82, 1) ;
+}
+.forgot{
+  color: rgba(255, 74, 82, 1);
+  margin-top: -8px;
+  text-decoration: none;
+}
+.line{
+  border: 0.2px solid #B2BEB5;
+  margin: 2% 0%;
 }
 
 @keyframes toggle {
@@ -317,6 +390,16 @@ ul, .main {
   .description div>h6{
     font-size: 10px;
   }
+  form > div{
+    display: block;
+  }
+  .auth-wrapper{
+    width: 90%;
+  }
+  textarea{
+    width: 90%;
+  }
+
 }
 @media screen and (max-width: 414px) {
   ul img{
@@ -324,6 +407,14 @@ ul, .main {
   }
   .main img{
     height: 30vh;
+  }
+  .options{
+    width: 100%;
+    display: inline-flex;
+    justify-content: left;
+  }
+  .btn2{
+    width: 200px;
   }
 }
 @media screen and (min-width: 415px) and (max-width: 575px) {
@@ -333,7 +424,14 @@ ul, .main {
   }
   .main img{
     height: 45vh;
-
+  }
+  .options{
+    width: 70%;
+    display: inline-flex;
+    justify-content: left;
+  }
+  .btn2{
+    width: 170px;
   }
 }
 
@@ -350,6 +448,14 @@ ul, .main {
   .main img{
     height: 60vh;
   }
+  .options{
+    width: 70%;
+    display: inline-flex;
+    justify-content: left;
+  }
+  .btn2{
+    width: 170px;
+  }
 }
 /* Media query for screens between 768px and 992px (e.g., small desktops) */
 @media  screen and (min-width: 768px) and (max-width: 991px) {
@@ -365,6 +471,14 @@ ul, .main {
   }
   .description div>h6{
     font-size: 20px;
+  }
+  .options{
+    width: 70%;
+    display: inline-flex;
+    justify-content: left;
+  }
+  .btn2{
+    width: 170px;
   }
 }
 

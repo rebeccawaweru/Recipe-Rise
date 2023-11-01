@@ -1,3 +1,6 @@
 export {default as Home} from './Home/Home'
+export {default as Signup} from './Auth/Signup'
 export {default as Login} from './Auth/Login'
+export {default as ForgotPassword} from './Auth/ForgotPassword'
+export {default as Contact} from './Contact/Contact'
 export {default as Faq} from './FAQ/Faq'

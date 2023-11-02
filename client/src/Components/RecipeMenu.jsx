@@ -1,7 +1,28 @@
-import {BiTimeFive,AiOutlineStar,BsChatFill,AiFillEye} from '../Assets'
+import {BiTimeFive,AiOutlineStar,BsChatFill,AiFillEye,RiDeleteBin6Fill} from '../Assets'
 import { useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
+import api from '../Services/api';
+import { success } from '../Utils';
 function RecipeMenu(props) {
     const navigate = useNavigate()
+    const handleDelete = async(id)=>{
+        Swal.fire({
+          title: 'Are you sure?',
+          text: "You won't be able to revert this!",
+          icon: 'warning',
+          confirmButtonText:'Delete',
+          confirmButtonColor:'red',
+          showCancelButton: true,
+        }).then((result)=>{
+          if (result.isConfirmed) {
+            api.delete(`/delete/${id}`).then((response)=>{
+                if(response.data.success){
+                    success('Recipe deleted!')
+                }
+            })
+          }
+        })
+      }
     return (
         <div className="recipe-menu">
         {props.data.length > 0 ? props.data.map((item)=>{
@@ -32,6 +53,12 @@ function RecipeMenu(props) {
                 <p className="icon"><AiFillEye size={15}/></p>
                 <button style={{border:'none', background:"none", cursor:"pointer"}}>view</button>
             </div>
+            
+            <div onClick={handleDelete(item._id)}>
+            <p className='icon'><RiDeleteBin6Fill size={15}/></p>
+                <button style={{border:'none', background:"none", cursor:"pointer"}}>del</button>
+            </div>
+       
          </div>
         </div>
    

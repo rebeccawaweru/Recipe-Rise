@@ -21,7 +21,8 @@ const signUp = async(req, res)=>{
         const user = await User.create({email,username,password:hashedpassword});
         res.status(StatusCodes.CREATED).json({success:true, user})  
     } catch (error) {
-        res.status(StatusCodes.INTERNAL_SERVER_ERROR).json(error)
+        console.log(error.message)
+        res.status(StatusCodes.INTERNAL_SERVER_ERROR).json(error.message)
     }
 }
 

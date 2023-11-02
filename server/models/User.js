@@ -4,7 +4,7 @@ const userSchema = mongoose.Schema({
     email:{type:String, require:true},
     username:{type:String, require:true},
     password:{type:String, require:true},
-    otp:{type:Number, default:0, unique:true}
+    otp:{type:Number, default:0}
 });
 userSchema.methods.comparePassword = async function(candidatePassword){
     const isMatch = await bcrypt.compare(candidatePassword, this.password);

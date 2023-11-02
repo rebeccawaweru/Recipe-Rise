@@ -2,6 +2,7 @@ import { useRef } from "react";
 import {Wrapper } from "../../Layouts";
 import {Slider, Category, RecipeMenu} from '../../Components'
 import { breakfast, brunch, dinner, lunch, salad, tea } from "../../Assets";
+import { data } from "../../Utils";
 function Home() {
     const ref = useRef(null)
     const handleScroll = () =>{
@@ -23,7 +24,7 @@ function Home() {
             <Category image={tea} title="Tea" caption="(3)"/>
          </div>
         {/* end of category */}
-        <RecipeMenu/>
+        <RecipeMenu data={data}/>
         </div>
     </Wrapper>
     );

@@ -3,31 +3,35 @@ import { home,home2,home3, home4} from "../Assets";
 import * as Yup from 'yup';
 export  const data = [
     {
-      id: 1,
-      image: home,
-      type:'Lunch',
-      title: 'Kale Quinoa and Avocado Salad with Lemon Dijon',
+      _id: 1,
+      avatar: home,
+      category:'Lunch',
+      name: 'Kale Quinoa and Avocado Salad with Lemon Dijon',
+      cooktime:"55min",
       description:"The doner is a Turkish creation of meat, often lamb, but not necessarily so, that is seasoned, stacked in a"
     },
     {
-      id: 2,
-      image: home2,
-      type: 'Rezala',
-      title:'Sultan Dines Kacchi Recipes Sultan Kacchi Recipes',
+      _id: 2,
+      avatar: home2,
+      category: 'Rezala',
+      name:'Sultan Dines Kacchi Recipes Sultan Kacchi Recipes',
+      cooktime:"55min",
       description:"The doner is a Turkish creation of meat, often lamb, but not necessarily so, that is seasoned, stacked in a"
     },
     {
-      id: 3,
-      image: home3,
-      type:'Salad',
-      title:'Lemon Dijon Vina igrette Kale Quinoa, and Avocado',
+      _id: 3,
+      avatar: home3,
+      category:'Salad',
+      name:'Lemon Dijon Vina igrette Kale Quinoa, and Avocado',
+      cooktime:"55min",
       description:"The doner is a Turkish creation of meat, often lamb, but not necessarily so, that is seasoned, stacked in a"
     },
     {
-      id: 4,
-      image: home4,
-      type:'Pasta',
-      title:'Spiced Pork and Pasta',
+      _id: 4,
+      avatar: home4,
+      category:'Pasta',
+      name:'Spiced Pork and Pasta',
+      cooktime:"55min",
       description:"The doner is a Turkish creation of meat, often lamb, but not necessarily so, that is seasoned, stacked in a"
     }
 ]
@@ -60,7 +64,8 @@ export const recipeSchema = Yup.object({
   preptime:Yup.string().required("Prep time is required"),
   cooktime:Yup.string().required("Cook time is required"),
   category:Yup.string().required("Please select category"),
-  description: Yup.string().required("Description is required")
+  budget:Yup.string().matches(/^\d+$/, 'Budget must contain only numbers').required("Meal Budget is required"),
+  description: Yup.string().required("Description is required"),
 })
 export const success = (message)=>{
   Swal.fire({
@@ -75,4 +80,19 @@ export const error = (message)=>{
     title: 'Error.',
     text: message,
   })
+}
+
+export const handleUpload = async (files) =>{
+  const data = new FormData()
+  data.append("file", files[0])
+  data.append("upload_preset", "Images");
+  const res = await fetch(
+    "https://api.cloudinary.com/v1_1/marite/image/upload",
+    {
+      method:"POST",
+      body:data
+    }
+  )
+  const File = await res.json()
+  return File
 }

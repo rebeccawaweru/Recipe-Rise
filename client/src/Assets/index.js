@@ -3,7 +3,7 @@ export {BsSearch,BsFillArrowRightCircleFill,BsFillArrowLeftCircleFill,BsChatFill
 export {HiOutlineShoppingBag} from 'react-icons/hi'
 export {RxDividerVertical} from 'react-icons/rx'
 export {IoIosArrowForward,IoIosArrowBack} from 'react-icons/io'
-export {AiOutlineClose, AiOutlineStar} from 'react-icons/ai'
+export {AiOutlineClose, AiOutlineStar, AiFillEye} from 'react-icons/ai'
 export {FaHome} from 'react-icons/fa'
 export {default as background} from './images/background.jpg'
 export {default as home} from './images/home.jpg'

@@ -15,14 +15,14 @@ function Slider() {
           <div className="image-container">
                <Icon icon={<IoIosArrowBack/>} handleClick={prevSlide} />
           {data.map((item) => {
-            return <div key={item.id} className={count === item.id ? 'active' : 'inactive'}>
+            return <div key={item.id} className={count === item._id ? 'active' : 'inactive'}>
                 <div className="description">
                     <div>
-                    <p>{item.type}</p>
-                    <h6>{item.title}</h6>
+                    <p>{item.category}</p>
+                    <h6>{item.name}</h6>
                     </div>
                 </div>
-                <img  src={item.image} alt="recipe"/>
+                <img  src={item.avatar} alt="recipe"/>
    
                 </div>
           })}

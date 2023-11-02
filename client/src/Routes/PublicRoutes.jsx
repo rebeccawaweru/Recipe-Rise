@@ -1,5 +1,5 @@
 import {Routes, Route } from "react-router-dom"
-import { Faq, Home, Signup, Login, ForgotPassword, Contact, Recipes, ConfrimPassword } from "../Pages"
+import { Faq, Home, Signup, Login, ForgotPassword, Contact, Recipes, ConfrimPassword, Detail } from "../Pages"
 const PublicRoutes = () =>{
   return(
         <Routes>
@@ -10,6 +10,7 @@ const PublicRoutes = () =>{
         <Route path="/confirmpassword" element={<ConfrimPassword/>}/>
         <Route path="/contact" element={<Contact/>}/>
         <Route path="/recipes" element={<Recipes/>}/>
+        <Route path="/recipe/detail/:id" element={<Detail/>}/>
         <Route path="/faq" element={<Faq/>}/>
 
         </Routes>

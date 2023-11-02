@@ -12,7 +12,8 @@ const recipeSchema = mongoose.Schema({
     budget:{type:Number},
     avatar:{type:String, require:true},
     month:{type:String},
-    createdOn:{type:Date,default:Date.now}
+    createdOn:{type:Date,default:Date.now},
+    status:{type:String,default:"public"}
 })
 recipeSchema.pre('save', function(next){
     if (this.isNew){

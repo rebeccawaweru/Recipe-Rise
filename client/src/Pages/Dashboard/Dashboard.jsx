@@ -3,10 +3,11 @@ import { Intro, DashMenu, RecipeMenu, NewRecipe, Reports } from "../../Component
 import { data } from "../../Utils";
 import {BiTimeFive} from '../../Assets'
 import { useState,useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams,useNavigate } from "react-router-dom";
 import api from "../../Services/api";
 function Dashboard() {
     const {id} = useParams()
+    const navigate = useNavigate()
     const [user, setUser] = useState({})
     const [active, setActive] = useState("My Collection")
     const [recipes,setRecipes] = useState([])
@@ -41,7 +42,7 @@ function Dashboard() {
     <div className="active-line custom-width"></div>
     <div className="sidebar-content">
     {data.map((item)=>{
-          return <div className="side-recipes" key={item._id}>
+          return <div onClick={()=>navigate(`/recipe/detail/${item._id}`)} className="side-recipes" key={item._id}>
         <img src={item.avatar} alt="recipe"/>
          <div className="content">
           <p className="time">{item.category}</p>

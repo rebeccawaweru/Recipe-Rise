@@ -1,10 +1,12 @@
 //navbar component 
 import { useState } from 'react';
-import {AiOutlineClose,logonobackground,BiLogoFacebook,BiLogoTwitter,BiLogoLinkedinSquare,BiLogoInstagramAlt,BiPlus,BsSearch,HiOutlineShoppingBag,RxDividerVertical,BiMenuAltRight} from '../Assets'
+import {AiOutlineClose,logonobackground,BiLogoFacebook,BiLogOutCircle,BiLogoTwitter,BiLogoLinkedinSquare,BiLogoInstagramAlt,BiPlus,BsSearch,HiOutlineShoppingBag,RxDividerVertical,BiMenuAltRight} from '../Assets'
 import { ListItem } from '../Components';
-import { Link } from 'react-router-dom';
+import { Link, useParams,useNavigate } from 'react-router-dom';
 function Header({handleClick}) {
   const [toggle, setToggle] = useState('none')
+  const {id} = useParams()
+  const navigate = useNavigate()
     return (
     <header>
     <nav> 
@@ -21,6 +23,9 @@ function Header({handleClick}) {
             <BsSearch />
             <RxDividerVertical  color='gray'/>
             <HiOutlineShoppingBag />
+            {id ? <><RxDividerVertical  color='gray'/>
+            <BiLogOutCircle onClick={()=>navigate('/')}/></> : null}
+
         </div>
         <div onClick={()=>setToggle('block')} className='togglemenu'>
           <BiMenuAltRight size={28} color='gray'/>
@@ -39,7 +44,7 @@ function Header({handleClick}) {
      </div>
 
      <hr/>
-     <div className='nav menu'>
+     {!id ? <div className='nav menu'>
        <ul>
         <ListItem to="/" page="Home"/>
         <ListItem onClick={handleClick} page="Category"/>
@@ -54,7 +59,7 @@ function Header({handleClick}) {
         <Link style={{textDecoration:"none", color:"white"}} to="/signup">Submit Recipe</Link>
         </button>
        </ul>
-     </div>
+     </div>:null}
 
     </nav>
     </header>

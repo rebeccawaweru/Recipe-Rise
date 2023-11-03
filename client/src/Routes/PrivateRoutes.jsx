@@ -1,11 +1,17 @@
-import { Route, Routes } from "react-router-dom"
+import { Route, Routes, Navigate } from "react-router-dom"
 import { Dashboard } from "../Pages"
 
 const PrivateRoutes = () =>{
-    return(
+    const token = localStorage.getItem('token')
+    if (token) {
+        return (
         <Routes>
-            <Route path="user/:id" element={<Dashboard/>}/>
+            <Route path="user" element={<Dashboard/>}/>
         </Routes>
-    )
+        )
+    } else {
+       return <Navigate to="/login"/>;
+    }
+ 
 }
 export default PrivateRoutes

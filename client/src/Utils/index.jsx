@@ -1,6 +1,7 @@
 import Swal from "sweetalert2";
 import { home,home2,home3, home4} from "../Assets";
 import * as Yup from 'yup';
+
 export  const data = [
     {
       _id: 1,
@@ -8,7 +9,8 @@ export  const data = [
       category:'Lunch',
       name: 'Kale Quinoa and Avocado Salad with Lemon Dijon',
       cooktime:"55min",
-      description:"The doner is a Turkish creation of meat, often lamb, but not necessarily so, that is seasoned, stacked in a"
+      description:"The doner is a Turkish creation of meat, often lamb, but not necessarily so, that is seasoned, stacked in a",
+      status:"Public"
     },
     {
       _id: 2,
@@ -16,7 +18,8 @@ export  const data = [
       category: 'Rezala',
       name:'Sultan Dines Kacchi Recipes Sultan Kacchi Recipes',
       cooktime:"55min",
-      description:"The doner is a Turkish creation of meat, often lamb, but not necessarily so, that is seasoned, stacked in a"
+      description:"The doner is a Turkish creation of meat, often lamb, but not necessarily so, that is seasoned, stacked in a",
+      status:"Public"
     },
     {
       _id: 3,
@@ -24,7 +27,8 @@ export  const data = [
       category:'Salad',
       name:'Lemon Dijon Vina igrette Kale Quinoa, and Avocado',
       cooktime:"55min",
-      description:"The doner is a Turkish creation of meat, often lamb, but not necessarily so, that is seasoned, stacked in a"
+      description:"The doner is a Turkish creation of meat, often lamb, but not necessarily so, that is seasoned, stacked in a",
+      status:"Public"
     },
     {
       _id: 4,
@@ -32,7 +36,8 @@ export  const data = [
       category:'Pasta',
       name:'Spiced Pork and Pasta',
       cooktime:"55min",
-      description:"The doner is a Turkish creation of meat, often lamb, but not necessarily so, that is seasoned, stacked in a"
+      description:"The doner is a Turkish creation of meat, often lamb, but not necessarily so, that is seasoned, stacked in a",
+      status:"Public"
     }
 ]
 

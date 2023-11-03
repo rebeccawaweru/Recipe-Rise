@@ -15,7 +15,7 @@ function Slider() {
           <div className="image-container">
                <Icon icon={<IoIosArrowBack/>} handleClick={prevSlide} />
           {data.map((item) => {
-            return <div key={item.id} className={count === item._id ? 'active' : 'inactive'}>
+            return <div key={item._id} className={count === item._id ? 'active' : 'inactive'}>
                 <div className="description">
                     <div>
                     <p>{item.category}</p>

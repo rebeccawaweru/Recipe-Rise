@@ -1,40 +1,47 @@
 import { Wrapper } from "../../Layouts";
-import { Intro, DashMenu, RecipeMenu, NewRecipe, Reports } from "../../Components";
-import { data } from "../../Utils";
+import { Intro, DashMenu, RecipeMenu, NewRecipe, Reports, Edit } from "../../Components";
+import { data} from "../../Utils";
 import {BiTimeFive} from '../../Assets'
 import { useState,useEffect } from "react";
-import { useParams,useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import api from "../../Services/api";
+import { jwtDecode } from "jwt-decode";
 function Dashboard() {
-    const {id} = useParams()
+    const decoded = jwtDecode(localStorage.getItem('token'))
+    const {username, id} = decoded.user
     const navigate = useNavigate()
-    const [user, setUser] = useState({})
     const [active, setActive] = useState("My Collection")
     const [recipes,setRecipes] = useState([])
+    const [edit, setEdit] = useState(false)
+    const [recipeId, setRecipeId] = useState('')
+    const handleUpdate = (id)=>{
+       setEdit(true)
+       setRecipeId(id)
+    }
     useEffect(()=>{
-        api.get(`/user/${id}`).then((response)=>{
-            setUser(response.data.user)
-        });
         api.get('/recipes').then((response)=>{
             setRecipes(response.data.filter(function(item){
                 return item.owner === id
             }))
           })
-    },[id])
+    },[id, recipes])
     return (
     <Wrapper>
-    <Intro location="Dashboard" title="Welcome" caption={user.username}/>
+    <Intro location="Dashboard" title="Welcome" caption={username}/>
     <div className="dash">
     <div className="dash-main">
         <div className="dash-menu">
-        <DashMenu title="My Collection" active={active} onClick={()=>setActive("My Collection")}/>
+        <DashMenu title="My Collection" active={active} onClick={()=>{setActive("My Collection"); setEdit(false)}}/>
         <DashMenu title="Add Recipe" active={active} onClick={()=>setActive("Add Recipe")}/>
         <DashMenu title="Saved"/>
         <DashMenu title="Reports" active={active} onClick={()=>setActive("Reports")}/>
         </div>
-         {active === "My Collection" && <RecipeMenu data={recipes}/>}
-         {active === "Add Recipe" &&  <NewRecipe/>}
-         {active === "Reports" && <Reports/>}
+         {active === "My Collection" && 
+         edit ? <Edit id={recipeId}/> :  <RecipeMenu data={recipes} id={id} handleUpdate={handleUpdate}/>} 
+        
+         {active === "Add Recipe" &&  <NewRecipe id={id}/>}
+         {active === "Reports" && <Reports id={id}/>}
+
     </div>
 
     <div className="sidebar">

@@ -1,8 +1,11 @@
 import { Wrapper } from "../../Layouts";
-import { Input, Intro } from "../../Components";
+import { Input, Intro, CustomLoader } from "../../Components";
 import { useFormik } from "formik";
-import { contactSchema } from "../../Utils";
+import { contactSchema, error, success } from "../../Utils";
+import api from "../../Services/api";
+import { useState } from "react";
 function Contact() {
+  const [loading, isLoading] = useState(false)
   const formik = useFormik({
     initialValues:{
       email:"",
@@ -13,7 +16,16 @@ function Contact() {
     },
     validationSchema: contactSchema,
     onSubmit:async(values)=>{
-
+      isLoading(true)
+     await api.post('/contact',{...values}).then((response)=>{
+        if(response.data.success){
+          success('Thank you for reaching out. We will be in touch')
+        }
+     }).catch((err)=>{
+         error(err.message)
+     })
+     isLoading(false)
+     formik.resetForm()
     }
   })
     return (
@@ -38,7 +50,7 @@ function Contact() {
           <p className="forgot">{formik.touched.message && formik.errors.message}</p>
           </div>
         <div className="options">
-        <button type="submit" className="btn">Send</button>
+        {loading ? <CustomLoader/> : <button type="submit" className="btn">Send</button>}
         </div> 
         </form>
        </div>

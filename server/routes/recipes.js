@@ -5,7 +5,7 @@ const router = express.Router()
 router.post('/new', newRecipe);
 router.get('/recipes', getRecipes)
 router.get('/recipe/:id', getRecipe)
-router.patch('/update/:id', updateRecipe)
+router.put('/update/:id', updateRecipe)
 router.delete('/delete/:id', deleteRecipe)
 
 module.exports = router

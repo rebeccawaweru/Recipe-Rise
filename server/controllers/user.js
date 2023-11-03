@@ -2,6 +2,7 @@ const User = require('../models/User');
 const {StatusCodes} = require('http-status-codes')
 const bcrypt = require('bcryptjs')
 const {createTransport} = require('nodemailer')
+const jwt = require('jsonwebtoken');
 const transporter = createTransport({
     service:'gmail',
     auth:{
@@ -33,8 +34,14 @@ const login = async(req,res)=>{
         res.status(StatusCodes.UNAUTHORIZED).json({message:"Email does not exist"});
     }
     const isPasswordCorrect = await user.comparePassword(password);
-    isPasswordCorrect ? res.status(StatusCodes.OK).json({user:user._id}) : res.status(StatusCodes.UNAUTHORIZED).json({message:"Wrong credentials"});
-}
+    if (isPasswordCorrect){
+        const userData = {username:user.username, id:user._id}
+        const token = jwt.sign({user: userData }, process.env.JWT_SECRET, {expiresIn:'1h'})
+        res.status(StatusCodes.OK).json({token})
+    }else{
+        res.status(StatusCodes.UNAUTHORIZED).json({message:"Wrong credentials"});
+    }
+} 
 
 const getUser = async(req, res) =>{
     const {id:userId} = req.params;
@@ -77,6 +84,15 @@ const confirmpassword = async(req,res)=>{
     .catch(err=>res.json(err.message))
 }
 
+const contact = async(req,res)=>{
+    const {email,name,phone,subject,message} = req.body
+    const send = transporter.sendMail({
+        from:email,
+        to:'wawerur95@gmail.com',
+        subject:subject,
+        html:`<p>Greetings,<br>${message}<br>With regards,<br>${name} ${phone ? phone : ''}</p>`
+    })
+    res.status(StatusCodes.OK).json({success:true, send})
+}
 
-
-module.exports = {signUp,login,getUser,resetpassword,confirmpassword}
+module.exports = {signUp,login,getUser,resetpassword,confirmpassword,contact}

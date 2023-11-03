@@ -253,7 +253,7 @@ ul, .main{
 .recipe-wrapper{
   height: auto;
   background-color: whitesmoke;
-  padding:0% 0% 1% 2%;
+  padding:2% 0% 1% 2%;
   cursor: pointer;
 }
 .create{
@@ -509,6 +509,10 @@ button:disabled{
   text-align: center;
   box-shadow: 0px 0px 0px 2px whitesmoke;
   margin-right: 10px;
+}
+.category:hover{
+  background-color: rgba(255, 74, 82, 1) ;
+  cursor: pointer;
 }
 .category img{
   height: 15vh;

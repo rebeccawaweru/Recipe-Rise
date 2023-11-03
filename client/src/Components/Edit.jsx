@@ -1,13 +1,14 @@
-import {useState} from 'react';
+import {useState, useEffect} from 'react';
 import { useFormik } from 'formik';
 import api from '../Services/api';
 import Input from './Input';
 import {BiPlus} from '../Assets'
 import { recipeSchema, handleUpload, success, error } from '../Utils';
 import CustomLoader from './CustomLoader'
-function NewRecipe({id}) {
+function Edit({id}) {
     const [list, setList] = useState([])
     const [cover,setCover] = useState("")
+    const [recipe,setRecipe] = useState({})
     const [loading,isLoading] = useState(false)
     const [ingredients, setIngredients] = useState({
         item:"",
@@ -35,29 +36,37 @@ function NewRecipe({id}) {
             budget:"",
             status:""
         },
-        validationSchema:recipeSchema,
+        // validationSchema:recipeSchema,
         onSubmit:async(values)=>{
             isLoading(true)
-            await api.post('/new', {...values, owner:id, ingredients:list, avatar:cover}).then((response)=>{
+            await api.put(`/update/${id}`, {...values, ingredients:list || recipe.ingredients, avatar:cover || recipe.avatar}).then((response)=>{
                 if (response.data.success){
-                    success('Recipe created')
+                    success('Updated')
                 }
             }).catch((err)=>{
                 error(err.message)
             })
             isLoading(false)
-            formik.resetForm()
+            // formik.resetForm()
             setList("")
             setCover("")
         }
     })
+    useEffect(()=>{
+        api.get(`/recipe/${id}`).then((response)=>{
+            console.log(response.data)
+            if(response.data){
+                setRecipe(response.data.recipe || {})
+              }
+        })
+    },[recipe,id])
     return (
         <form className="create" onSubmit={formik.handleSubmit}>
-        <Input label="Name" extra="*" placeholder="Name" {...formik.getFieldProps("name")} error={formik.touched.name && formik.errors.name} />
-        <Input label="Prep Time" extra="*" placeholder="e.g 30 min" {...formik.getFieldProps("preptime")} error={formik.touched.preptime && formik.errors.preptime}/>
-        <Input label="Cook Time" extra="*" placeholder="e.g 60 min" {...formik.getFieldProps("cooktime")} error={formik.touched.cooktime && formik.errors.cooktime}/>
+        <Input  label="Name" extra="*" placeholder={recipe.name} {...formik.getFieldProps("name")} error={formik.touched.name && formik.errors.name} />
+        <Input value={recipe.preptime} label="Prep Time" extra="*" placeholder={recipe.preptime} {...formik.getFieldProps("preptime")} error={formik.touched.preptime && formik.errors.preptime}/>
+        <Input value={recipe.cooktime} label="Cook Time" extra="*" placeholder={recipe.cooktime} {...formik.getFieldProps("cooktime")} error={formik.touched.cooktime && formik.errors.cooktime}/>
         <label>Category</label>
-         <select {...formik.getFieldProps("category")} error={formik.touched.category && formik.errors.category}>
+         <select value={recipe.category} {...formik.getFieldProps("category")} error={formik.touched.category && formik.errors.category}>
             <option value="">Select</option>
             <option value="Breakfast">Breakfast</option>
             <option value="Lunch">Lunch</option>
@@ -67,7 +76,7 @@ function NewRecipe({id}) {
             <option value="Tea">Tea</option>
          </select>
          {formik.errors.category ? <p>{formik.touched.category && formik.errors.category}</p> : null}
-         <Input label="Meal Budget (Ksh)" extra="*" placeholder="e.g 1000" {...formik.getFieldProps("budget")} error={formik.touched.budget && formik.errors.budget}/>
+         <Input value={recipe.budget} label="Meal Budget (Ksh)" extra="*" placeholder={recipe.budget} {...formik.getFieldProps("budget")} error={formik.touched.budget && formik.errors.budget}/>
          <label><i>Ingredients</i></label>
          <div className="ingredient">
             <Input label="Item" extra="*" name="item" value={ingredients.item} onChange={handleChange} />
@@ -81,20 +90,20 @@ function NewRecipe({id}) {
             </div>
         ))}
        </div>
-        <textarea rows={10} placeholder="Description" {...formik.getFieldProps("description")} ></textarea>
+        <textarea value={recipe.description} rows={10} placeholder={recipe.description} {...formik.getFieldProps("description")} ></textarea>
         {formik.errors.description ? <p>{formik.touched.description && formik.errors.description}</p> : null}
         <label>Post</label>
-         <select {...formik.getFieldProps("status")} error={formik.touched.status && formik.errors.status}>
+         <select value={recipe.status} {...formik.getFieldProps("status")} error={formik.touched.status && formik.errors.status}>
             <option value="Public">Public</option>
             <option value="Private">Private</option>
          </select>
         <Input label="Cover Photo" extra="*" type="file" onChange={handleCoverUpload}/>
-         {cover && 
-         <img src={cover} alt='recipe-preview' className='cover'/>}
+         {(cover || recipe.avatar) && 
+         <img src={cover || recipe.avatar} alt='recipe-preview' className='cover'/>}
         <p className="error">{formik.touched.description && formik.errors.description}</p>
-       {loading ? <CustomLoader/> : <button type="submit" className="btn">Submit</button>}
+       {loading ? <CustomLoader/> : <button type="submit" className="btn">Update</button>}
      </form>
     );
 }
 
-export default NewRecipe;
+export default Edit;

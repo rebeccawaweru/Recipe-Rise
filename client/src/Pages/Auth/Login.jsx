@@ -19,7 +19,10 @@ function Login() {
       onSubmit : async(values)=>{
            isLoading(true)
            await api.post('/login', {...values}).then((response)=>{
-            navigate(`/dashboard/user/${response.data.user}`)
+            if(response.data.token){
+              localStorage.setItem('token', response.data.token);
+              navigate('/dashboard/user')
+            }
            }).catch((err)=>{
             error(err.message)
            })

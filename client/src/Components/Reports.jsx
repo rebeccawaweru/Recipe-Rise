@@ -1,10 +1,8 @@
-import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import api from "../Services/api";
 import { Chart } from 'react-google-charts';
 import CustomLoader from "./CustomLoader";
-function Reports() {
-    const {id} = useParams()
+function Reports({id}) {
     const [recipes,setRecipes] = useState([])
   // Calculate the total ingredient prices for each item
 const itemsWithTotalPrice = recipes.map(item => ({
@@ -22,7 +20,7 @@ const itemsWithTotalPrice = recipes.map(item => ({
       (total, item) => total + item.ingredients.reduce((subtotal, ingredient) => subtotal + parseFloat(ingredient.price), 0),
       0
     );
-    const chartData2 = [['Category', 'Amount'], ['Total Budget', totalBudget], ['Total Item Price', totalItemPrice]];
+    const chartData2 = [['Category', 'Amount'], ['Total Budget', totalBudget], ['Total Expense', totalItemPrice]];
     
     useEffect(()=>{
         api.get('/recipes').then((response)=>{
@@ -32,8 +30,9 @@ const itemsWithTotalPrice = recipes.map(item => ({
           })
     },[id])
     return (
-        <div style={{width:"100%"}}>
-    <Chart
+    <div style={{width:"100%"}}>
+      {recipes.length > 0 ? <>
+        <Chart
       width={'90%'}
       height={'70vh'}
       chartType="BarChart"
@@ -58,6 +57,8 @@ const itemsWithTotalPrice = recipes.map(item => ({
          is3D: true,
       }}
     />
+      </> : <p><i>Add recipes to get reports</i></p>}
+
         </div>
     );
 }

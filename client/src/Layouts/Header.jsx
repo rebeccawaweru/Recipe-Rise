@@ -5,7 +5,7 @@ import { ListItem } from '../Components';
 import { Link, useParams,useNavigate } from 'react-router-dom';
 function Header({handleClick}) {
   const [toggle, setToggle] = useState('none')
-  const {id} = useParams()
+  const token = localStorage.getItem('token')
   const navigate = useNavigate()
     return (
     <header>
@@ -23,8 +23,12 @@ function Header({handleClick}) {
             <BsSearch />
             <RxDividerVertical  color='gray'/>
             <HiOutlineShoppingBag />
-            {id ? <><RxDividerVertical  color='gray'/>
-            <BiLogOutCircle onClick={()=>navigate('/')}/></> : null}
+            {token ? <><RxDividerVertical  color='gray'/>
+            <BiLogOutCircle onClick={()=>{
+              navigate('/');
+              localStorage.removeItem('token')
+              }
+              }/></> : null}
 
         </div>
         <div onClick={()=>setToggle('block')} className='togglemenu'>
@@ -33,7 +37,7 @@ function Header({handleClick}) {
         </ul>
      </div>
      {/* toggle menu on small devices */}
-     <div className='sidemenu' style={{display:toggle}}>
+     {!token && <div className='sidemenu' style={{display:toggle}}>
         <AiOutlineClose onClick={()=>setToggle('none')} className='close'/>
         <p><ListItem to="/" page="Home"/></p>
         <p><ListItem onClick={handleClick} page="Category"/></p>
@@ -41,10 +45,10 @@ function Header({handleClick}) {
         <p><ListItem to="/faq" page="FAQ"/></p>
         <p><ListItem to="/contact" page="Contact"/></p>
         <p><ListItem to="/login" page="Login"/></p>
-     </div>
+     </div>}
 
      <hr/>
-     {!id ? <div className='nav menu'>
+     {!token ? <div className='nav menu'>
        <ul>
         <ListItem to="/" page="Home"/>
         <ListItem onClick={handleClick} page="Category"/>

@@ -1,10 +1,9 @@
-import {BiTimeFive,AiOutlineStar,BsChatFill,AiFillEye,RiDeleteBin6Fill} from '../Assets'
-import { useNavigate, useParams } from 'react-router-dom';
+import {BiTimeFive,AiOutlineStar,BsChatFill,AiFillEye,RiDeleteBin6Fill,MdOutlineEdit} from '../Assets'
+import { useNavigate} from 'react-router-dom';
 import Swal from 'sweetalert2';
 import api from '../Services/api';
 import { success } from '../Utils';
 function RecipeMenu(props) {
-    const {id} = useParams()
     const navigate = useNavigate()
     const handleDelete = async(id)=>{
         Swal.fire({
@@ -54,11 +53,17 @@ function RecipeMenu(props) {
                 <p className="icon"><AiFillEye size={15}/></p>
                 <button style={{border:'none', background:"none", cursor:"pointer"}}>view</button>
             </div>
-            
-           {id ? <div onClick={()=>handleDelete(item._id)}>
+            {props.id ? <div onClick={()=>props.handleUpdate(item._id)}>
+            <p className='icon'><MdOutlineEdit size={15}/></p>
+                <button style={{border:'none', background:"none", cursor:"pointer"}}>edit</button>
+            </div> : null}
+          
+           {props.id ? <div onClick={()=>handleDelete(item._id)}>
             <p className='icon'><RiDeleteBin6Fill size={15}/></p>
                 <button style={{border:'none', background:"none", cursor:"pointer"}}>del</button>
             </div> : null}
+         
+            
        
          </div>
         </div>

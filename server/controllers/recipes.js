@@ -32,6 +32,7 @@ const getRecipe = async(req,res)=>{
 const updateRecipe = async(req,res)=>{
     try {
         const {id:recipeId} = req.params;
+        
         const recipe = await Recipe.findByIdAndUpdate({_id:recipeId}, req.body)
         res.status(StatusCodes.OK).json({success:true,recipe})
     } catch (error) {

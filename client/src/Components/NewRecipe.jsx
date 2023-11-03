@@ -53,7 +53,7 @@ function NewRecipe({id}) {
     })
     return (
         <form className="create" onSubmit={formik.handleSubmit}>
-        <Input label="Name" extra="*" placeholder="Name" {...formik.getFieldProps("name")} error={formik.touched.name && formik.errors.name} />
+        <Input label="Meal" extra="*" placeholder="Name" {...formik.getFieldProps("name")} error={formik.touched.name && formik.errors.name} />
         <Input label="Prep Time" extra="*" placeholder="e.g 30 min" {...formik.getFieldProps("preptime")} error={formik.touched.preptime && formik.errors.preptime}/>
         <Input label="Cook Time" extra="*" placeholder="e.g 60 min" {...formik.getFieldProps("cooktime")} error={formik.touched.cooktime && formik.errors.cooktime}/>
         <label>Category</label>
@@ -85,6 +85,7 @@ function NewRecipe({id}) {
         {formik.errors.description ? <p>{formik.touched.description && formik.errors.description}</p> : null}
         <label>Post</label>
          <select {...formik.getFieldProps("status")} error={formik.touched.status && formik.errors.status}>
+            <option disabled>Select</option>
             <option value="Public">Public</option>
             <option value="Private">Private</option>
          </select>

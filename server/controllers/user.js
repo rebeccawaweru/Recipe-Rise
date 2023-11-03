@@ -95,4 +95,20 @@ const contact = async(req,res)=>{
     res.status(StatusCodes.OK).json({success:true, send})
 }
 
-module.exports = {signUp,login,getUser,resetpassword,confirmpassword,contact}
+const bookmark = async(req,res)=>{
+    const {id:userId} = req.params;
+    const user = await User.findById({_id:userId});
+    user.bookmarks.push(req.body)
+    await user.save();
+    res.status(StatusCodes.OK).json({success:true})
+}
+
+const removebookmark = async(req,res)=>{
+    const {id:userId} = req.params;
+    const user = await User.findById({_id:userId});
+    user.bookmarks = user.bookmarks.filter((bookmarkId) => bookmarkId.toString() !== req.body.toString());
+    await user.save();
+    res.status(StatusCodes.OK).json({success:true})
+}
+
+module.exports = {signUp,login,getUser,resetpassword,confirmpassword,contact,bookmark,removebookmark}

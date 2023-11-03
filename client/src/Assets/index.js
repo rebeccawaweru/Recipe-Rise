@@ -1,5 +1,5 @@
 export {BiLogoFacebook,BiHeart, BiLogoTwitter,BiLogoInstagramAlt,BiTimeFive,BiLogOutCircle, BiLogoLinkedinSquare,BiPlus,BiMinus,BiMenuAltRight, BiLogoPinterest, BiLogoDribbble, BiLogoYoutube} from 'react-icons/bi'
-export {BsSearch,BsFillArrowRightCircleFill,BsFillArrowLeftCircleFill,BsChatFill} from 'react-icons/bs'
+export {BsBookmark,BsBookmarkFill,BsSearch,BsFillArrowRightCircleFill,BsFillArrowLeftCircleFill,BsChatFill} from 'react-icons/bs'
 export {HiOutlineShoppingBag} from 'react-icons/hi'
 export {RxDividerVertical} from 'react-icons/rx'
 export {IoIosArrowForward,IoIosArrowBack} from 'react-icons/io'

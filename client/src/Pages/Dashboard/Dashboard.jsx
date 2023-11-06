@@ -25,14 +25,12 @@ function Dashboard() {
     }
     useEffect(()=>{
         api.get(`/user/${id}`).then((response)=>{
-   
             // Convert bookmarked recipes to an array of string IDs
             const bookmarkedRecipeIds = response.data.user.bookmarks.map((bookmark) => bookmark.id ? bookmark.id.toString() : null);
            // Find recipes whose IDs are in bookmarks
             setSaved(combined.filter((recipe) =>
             bookmarkedRecipeIds.includes(recipe._id ? recipe._id.toString() : null)
             ));
-           
         })
         api.get('/recipes').then((response)=>{
             setList(response.data)
@@ -68,7 +66,7 @@ function Dashboard() {
     <div className="active-line custom-width"></div>
     <div className="sidebar-content">
     {data.map((item)=>{
-          return <div onClick={()=>navigate(`/recipe/detail/${item._id}`)} className="side-recipes" key={item._id}>
+          return <div key={item._id} onClick={()=>navigate(`/recipe/detail/${item._id}`)} className="side-recipes" >
         <img src={item.avatar} alt="recipe"/>
          <div className="content">
           <p className="time">{item.category}</p>
@@ -82,6 +80,7 @@ function Dashboard() {
         })}
     </div>
     </div>
+
     </div>
     </Wrapper>
     );

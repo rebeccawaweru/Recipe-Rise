@@ -39,7 +39,17 @@ function Edit({id}) {
         // validationSchema:recipeSchema,
         onSubmit:async(values)=>{
             isLoading(true)
-            await api.put(`/update/${id}`, {...values, ingredients:list || recipe.ingredients, avatar:cover || recipe.avatar}).then((response)=>{
+            await api.put(`/update/${id}`, {
+                name:values.name || recipe.name,
+                preptime:values.preptime || recipe.preptime,
+                cooktime:values.cooktime || recipe.cooktime,
+                category: values.category || recipe.category,
+                description:values.description || recipe.description,
+                budget:values.budget || recipe.budget,
+                status:values.status || recipe.status,
+                ingredients:list.length > 0 ? list : recipe.ingredients,
+                avatar:cover || recipe.avatar
+                }).then((response)=>{
                 if (response.data.success){
                     success('Updated')
                 }
@@ -54,7 +64,6 @@ function Edit({id}) {
     })
     useEffect(()=>{
         api.get(`/recipe/${id}`).then((response)=>{
-            console.log(response.data)
             if(response.data){
                 setRecipe(response.data.recipe || {})
               }

@@ -2,6 +2,13 @@ import Swal from "sweetalert2";
 import { home,home2,home3, home4} from "../Assets";
 import * as Yup from 'yup';
 
+export const signupSchema = Yup.object({
+  email: Yup.string().email("Invalid email").required("Email is required"),
+  username: Yup.string().trim().min(5,"username must contain 5 or more characters").required("Username is required"),
+  password: Yup.string().trim().min(6, "password must contain 6 or more characters").required("Password is required"),
+  confirmpassword: Yup.string().equals([Yup.ref('password'),null], 'Passwords do not match').required('Confirm password')
+});
+
 export  const data = [
     {
       _id: 1,
@@ -45,12 +52,7 @@ export const loginSchema = Yup.object({
   email: Yup.string().email("Invalid email").required("Email is required"),
   password: Yup.string().trim().min(6, "password must contain 6 or more characters").required("Password is required")
 });
-export const signupSchema = Yup.object({
-  email: Yup.string().email("Invalid email").required("Email is required"),
-  username: Yup.string().trim().min(5,"username must contain 5 or more characters").required("Username is required"),
-  password: Yup.string().trim().min(6, "password must contain 6 or more characters").required("Password is required"),
-  confirmpassword: Yup.string().equals([Yup.ref('password'),null], 'Passwords do not match').required('Confirm password')
-});
+
 export const forgotSchema = Yup.object({
   email: Yup.string().email("Invalid email").required("Email is required")
 });

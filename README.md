@@ -6,7 +6,7 @@ Official site: https://reciperise.netlify.app/
 Previews:
 
 <img width="562" alt="landingpage" src="https://github.com/rebeccawaweru/Recipe-Rise/assets/79188888/bdb59fd5-d1d5-4ed9-8d98-e628035c76bf">
-<img width="958" alt="recipes" src="https://github.com/rebeccawaweru/Recipe-Rise/assets/79188888/248fc18d-62c7-4610-8b17-b94e3eb02c1e">
+<img width="960" alt="recipes" src="https://github.com/rebeccawaweru/Recipe-Rise/assets/79188888/32d3daac-8de3-4c4e-a2c6-0efe4a343a36">
 <img width="944" alt="reports" src="https://github.com/rebeccawaweru/Recipe-Rise/assets/79188888/c3f91fb1-43a1-453c-8168-9f60817c1e0d">
 
 

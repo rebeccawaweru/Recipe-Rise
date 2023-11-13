@@ -7,6 +7,8 @@ Previews:
 
 <img width="562" alt="landingpage" src="https://github.com/rebeccawaweru/Recipe-Rise/assets/79188888/bdb59fd5-d1d5-4ed9-8d98-e628035c76bf">
 <img width="722" alt="recipes" src="https://github.com/rebeccawaweru/Recipe-Rise/assets/79188888/c23f522c-b96f-48ba-9d79-f5dabb4ac8dc">
+<img width="944" alt="reports" src="https://github.com/rebeccawaweru/Recipe-Rise/assets/79188888/c3f91fb1-43a1-453c-8168-9f60817c1e0d">
+
 
 
 # Getting Started with Create React App

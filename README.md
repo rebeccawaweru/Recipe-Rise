@@ -1,8 +1,6 @@
 # Recipe-Rise
 Web Application based on different user recipes and a corresponding expense tracker
 
-Problem Statement
-
 The project will solve the problem of disorganized recipe management, expense tracking and inefficient meal planning.It offers a user-friendly platform for individuals to seamlessly organize, discover, and follow recipes, while also helping them track and budget for the ingredients they purchase. By integrating these features, the project aims to simplify the cooking experience and meal planning, enabling users to enjoy their culinary journey with greater convenience and cost-effectiveness.
 
 Official site: https://reciperise.netlify.app/

@@ -4,7 +4,7 @@ function Footer() {
     return (
      <footer >
        <img src={logocolor} alt='recipe-rise-footer'/>
-        <div>
+{/*         <div>
             <ul className="socialmedia">
                 <li><BiLogoFacebook className='xs-counter-li'/> followers</li>
                 <li><BiLogoTwitter className='xs-counter-li' /> followers</li>
@@ -13,8 +13,8 @@ function Footer() {
                 <li><BiLogoInstagramAlt className='xs-counter-li'/> followers</li>
                 <li><BiLogoYoutube className='xs-counter-li'/> subscribers</li>
             </ul>
-        </div>
-        <p className='copyright'>Copyright © 2023 Recipe - Rise. All rights reserved
+        </div> */}
+        <p className='copyright'>Copyright © 2023 Recipe - Rise All rights reserved
         </p>
      </footer>
     );

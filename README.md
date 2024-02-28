@@ -88,3 +88,10 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
 
+
+
+# removing a file from git
+git rm --cached <filename>
+
+# removing .env from commit history
+git filter-branch --index-filter "git rm -rf --cached --ignore-unmatch .env" HEAD
